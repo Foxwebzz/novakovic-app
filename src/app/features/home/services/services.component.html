@@ -1,0 +1,18 @@
+<section class="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <h2 id="services-title" class="section-title">Šta mogu da napravim za vašu firmu</h2>
+    <p class="section-lead">
+      Svaka aplikacija se pravi oko jednog konkretnog posla koji danas oduzima previše vremena.
+      Ovo su poslovi sa kojima firme najčešće dolaze.
+    </p>
+
+    <ul class="services__list">
+      @for (service of services; track service.title) {
+        <li class="services__item">
+          <h3 class="services__name">{{ service.title }}</h3>
+          <p class="services__text">{{ service.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

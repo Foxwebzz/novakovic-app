@@ -1,13 +1,35 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>NovakovicApp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nikola Novaković · Aplikacije po meri za firme</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pravim web aplikacije po meri koje zamenjuju Excel tabele i ručni rad: kalkulacije, ponude, cenovnici i izveštaji za proizvodne i trgovinske firme."
+    />
+    <meta name="theme-color" content="#0f2236" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sr_RS" />
+    <meta property="og:title" content="Nikola Novaković · Aplikacije po meri za firme" />
+    <meta
+      property="og:description"
+      content="Vaša firma je prerasla Excel. Aplikacije po meri za ponude, kalkulacije i interne procese."
+    />
+    <meta property="og:image" content="/media/kolektor-kalkulacija.webp" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  </head>
+  <body>
+    <app-root></app-root>
+    <!-- Netlify Forms: skrivena forma da Netlify pri deployu prepozna polja forme "upit".
+         Pravu formu šalje ContactService preko fetch-a. -->
+    <form name="upit" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="ime" />
+      <input name="firma" />
+      <input name="kontakt" />
+      <textarea name="poruka"></textarea>
+    </form>
+  </body>
 </html>

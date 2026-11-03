@@ -1,0 +1,33 @@
+<section class="problem" aria-labelledby="problem-title">
+  <div class="wrap problem__grid">
+    <div>
+      <h2 id="problem-title" class="section-title">Zvuči poznato?</h2>
+      <p class="section-lead">
+        Excel je odličan za početak. Problem nastaje kad od jedne tabele i jedne osobe koja je
+        razume zavisi ceo posao.
+      </p>
+    </div>
+
+    <table class="sheet">
+      <caption class="visually-hidden">Kako posao izgleda danas, a kako sa aplikacijom</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="sheet__num"><span class="visually-hidden">Red</span></th>
+          <th scope="col">Posao</th>
+          <th scope="col">Danas</th>
+          <th scope="col" class="sheet__after-head">Sa aplikacijom</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row.task; let i = $index) {
+          <tr>
+            <td class="sheet__num" aria-hidden="true">{{ i + 2 }}</td>
+            <th scope="row" class="sheet__task">{{ row.task }}</th>
+            <td class="sheet__before" data-label="Danas">{{ row.before }}</td>
+            <td class="sheet__after" data-label="Sa aplikacijom">{{ row.after }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

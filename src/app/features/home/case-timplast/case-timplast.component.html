@@ -1,0 +1,34 @@
+<section class="tp" aria-labelledby="timplast-title">
+  <div class="wrap tp__grid">
+    <div class="tp__copy">
+      <p class="tp__client">TIM-PLAST, PVC i ALU stolarija</p>
+      <h2 id="timplast-title" class="section-title tp__title">Cenovnik koji sam računa ponudu</h2>
+      <p class="section-lead">
+        Umesto traženja dimenzija po tabelama, prodavac unese širinu i visinu i odmah dobije cenu.
+        Stavke se dodaju u račun, a zbir se vidi u svakom trenutku.
+      </p>
+      <ul class="tp__points">
+        @for (point of points; track point) {
+          <li>{{ point }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="tp__visual">
+      <img
+        class="tp__desktop"
+        ngSrc="/media/timplast-kalkulator.webp"
+        width="1200"
+        height="800"
+        alt="Kalkulator cena: za komarnik 120 puta 140 centimetara prikazana je cena bez ugradnje i sa ugradnjom, a ispod je zbir izabranih prozora."
+      />
+      <img
+        class="tp__phone"
+        ngSrc="/media/timplast-mobilni.webp"
+        width="390"
+        height="760"
+        alt="Ista aplikacija na telefonu: pretraga prozora po dimenzijama i cenovnik."
+      />
+    </div>
+  </div>
+</section>

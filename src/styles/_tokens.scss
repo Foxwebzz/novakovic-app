@@ -1,0 +1,50 @@
+// Design tokeni. Koristi ove vrednosti umesto hardkodovanih boja i razmaka.
+
+:root {
+  // Boje
+  --c-ink: #0f2236; // teget iz brenda, tamne sekcije
+  --c-ink-2: #173451; // površine na tamnom
+  --c-paper: #f1f4f2; // svetla, hladna podloga
+  --c-paper-2: #e4eae6; // linije mreže, odvojene površine
+  --c-text: #14202c; // tekst na svetlom
+  --c-text-muted: #4b5a68; // sekundarni tekst na svetlom (kontrast 6.9:1)
+  --c-on-ink: #eef3f7; // tekst na tamnom
+  --c-on-ink-muted: #a9bccd; // sekundarni tekst na tamnom (kontrast 8.6:1)
+  --c-green: #18834c; // akcenat na svetlom (kontrast 4.9:1)
+  --c-green-bright: #2fc47a; // akcenat na tamnom
+  --c-line: #c9d3cd;
+  --c-error: #b42318;
+
+  // Tipografija
+  --font: 'Schibsted Grotesk Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fs-sm: 0.875rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.25rem;
+  --fs-lg: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --fs-xl: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --fs-hero: clamp(2.6rem, 1.4rem + 5.4vw, 6rem);
+  --lh-tight: 1.02;
+  --lh-head: 1.12;
+  --lh-body: 1.55;
+
+  // Razmaci
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  // Layout
+  --max-w: 76rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 62ch;
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --header-h: 4rem;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

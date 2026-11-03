@@ -1,0 +1,182 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.case {
+  padding-block: var(--s-9);
+  background: var(--c-ink);
+  color: var(--c-on-ink);
+}
+
+.case__client {
+  color: var(--c-green-bright);
+  font-weight: 600;
+}
+
+.case__title {
+  margin-top: var(--s-3);
+  max-width: 18ch;
+}
+
+.case__lead {
+  margin-top: var(--s-4);
+  max-width: var(--measure);
+  font-size: var(--fs-md);
+  color: var(--c-on-ink-muted);
+}
+
+.case__body {
+  margin-top: var(--s-8);
+  display: grid;
+  gap: var(--s-6);
+
+  @media (min-width: bp.$md) {
+    grid-template-columns: minmax(18rem, 1fr) 2fr;
+    align-items: start;
+  }
+}
+
+// Koraci: na mobilnom ispod snimka
+.steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--s-2);
+  order: 2;
+
+  @media (min-width: bp.$md) {
+    order: 0;
+  }
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  column-gap: var(--s-3);
+  width: 100%;
+  padding: var(--s-4);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid rgb(169 188 205 / 0.25);
+  cursor: pointer;
+  transition:
+    border-color 0.25s var(--ease-out),
+    background-color 0.25s var(--ease-out);
+
+  &:hover {
+    background: rgb(255 255 255 / 0.04);
+  }
+}
+
+.step--active {
+  border-left-color: var(--c-green-bright);
+  background: var(--c-ink-2);
+
+  .step__text {
+    display: block;
+  }
+
+  .step__num {
+    background: var(--c-green-bright);
+    color: var(--c-ink);
+    border-color: var(--c-green-bright);
+  }
+}
+
+.step__num {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-on-ink-muted);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.25s var(--ease-out);
+}
+
+.step__title {
+  align-self: center;
+  font-size: var(--fs-md);
+  font-weight: 650;
+}
+
+.step__text {
+  display: none;
+  margin-top: var(--s-2);
+  color: var(--c-on-ink-muted);
+}
+
+// Prozor pregledača oko snimka
+.screen {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 30px 80px -20px rgb(0 0 0 / 0.6);
+}
+
+.screen__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #e6ebef;
+
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #c3ccd4;
+  }
+}
+
+.screen__url {
+  margin-left: var(--s-3);
+  padding: 2px 12px;
+  border-radius: 99px;
+  background: #fff;
+  color: var(--c-text-muted);
+  font-size: 0.75rem;
+}
+
+.screen__video {
+  width: 100%;
+  aspect-ratio: 1280 / 580;
+  object-fit: cover;
+  object-position: top left;
+  background: #fff;
+
+  // Na telefonu prikaži uvećan levi deo ekrana da bi tekst bio čitljiv
+  @media (max-width: calc(bp.$sm - 1px)) {
+    aspect-ratio: 4 / 3.4;
+  }
+}
+
+.facts {
+  margin: var(--s-8) 0 0;
+  display: grid;
+  gap: var(--s-5);
+  padding-top: var(--s-6);
+  border-top: 1px solid rgb(169 188 205 / 0.2);
+
+  @media (min-width: bp.$sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  dt {
+    color: var(--c-green-bright);
+    font-weight: 650;
+  }
+
+  dd {
+    margin: var(--s-1) 0 0;
+    font-size: var(--fs-md);
+    line-height: 1.35;
+  }
+}

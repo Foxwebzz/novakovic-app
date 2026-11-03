@@ -1,0 +1,72 @@
+<section id="primer" class="case" aria-labelledby="kolektor-title">
+  <div class="wrap">
+    <header class="case__head">
+      <p class="case__client">Kolektor, proizvodnja transformatora</p>
+      <h2 id="kolektor-title" class="section-title case__title">
+        Predkalkulacija koja je zamenila Excel tabele
+      </h2>
+      <p class="case__lead">
+        Ponude za transformatore pravile su se ručno, u tabelama. Sada tim bira materijale iz
+        kataloga, a aplikacija računa cenu i pravi dokument za kupca.
+      </p>
+    </header>
+
+    <div class="case__body">
+      <ol class="steps" aria-label="Kako aplikacija radi">
+        @for (step of steps; track step.title; let i = $index) {
+          <li>
+            <button
+              type="button"
+              class="step"
+              [class.step--active]="active() === i"
+              [attr.aria-pressed]="active() === i"
+              (click)="select(i)"
+            >
+              <span class="step__num" aria-hidden="true">{{ i + 1 }}</span>
+              <span class="step__title">{{ step.title }}</span>
+              <span class="step__text">{{ step.text }}</span>
+            </button>
+          </li>
+        }
+      </ol>
+
+      <figure class="screen">
+        <div class="screen__bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <p class="screen__url">predkalkulacija</p>
+        </div>
+        <video
+          #video
+          class="screen__video"
+          [src]="current().video"
+          [poster]="current().poster"
+          [attr.controls]="reducedMotion() ? '' : null"
+          muted
+          playsinline
+          preload="metadata"
+          width="1280"
+          height="580"
+          (ended)="onEnded()"
+        ></video>
+        <figcaption class="visually-hidden">
+          Snimak ekrana aplikacije: {{ current().title }}
+        </figcaption>
+      </figure>
+    </div>
+
+    <dl class="facts">
+      <div>
+        <dt>Pre</dt>
+        <dd>Ponude u Excel tabelama, cene iz cenovnika prepisivane ručno</dd>
+      </div>
+      <div>
+        <dt>Sada</dt>
+        <dd>Aplikacija u svakodnevnoj upotrebi u firmi</dd>
+      </div>
+      <div>
+        <dt>Rezultat</dt>
+        <dd>Ponuda koja je trajala satima završava se za nekoliko minuta</dd>
+      </div>
+    </dl>
+  </div>
+</section>

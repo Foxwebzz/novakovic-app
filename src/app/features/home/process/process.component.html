@@ -1,0 +1,15 @@
+<section class="process" aria-labelledby="process-title">
+  <div class="wrap">
+    <h2 id="process-title" class="section-title">Kako izgleda saradnja</h2>
+
+    <ol class="process__list">
+      @for (phase of phases; track phase.title; let i = $index) {
+        <li class="process__item">
+          <span class="process__num" aria-hidden="true">{{ i + 1 }}</span>
+          <h3 class="process__name">{{ phase.title }}</h3>
+          <p class="process__text">{{ phase.text }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

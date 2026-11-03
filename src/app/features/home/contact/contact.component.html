@@ -1,0 +1,100 @@
+<section id="kontakt" class="contact" aria-labelledby="contact-title">
+  <div class="wrap contact__grid">
+    <div class="contact__intro">
+      <h2 id="contact-title" class="section-title">Opišite šta vas usporava</h2>
+      <p class="contact__lead">
+        Napišite koji posao u firmi oduzima najviše vremena. Prvi razgovor služi da zajedno vidimo
+        da li aplikacija ima smisla za vas.
+      </p>
+
+      <dl class="contact__direct">
+        <div>
+          <dt>Email</dt>
+          <dd><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></dd>
+        </div>
+        <div>
+          <dt>Telefon</dt>
+          <dd><a [href]="contact.phoneHref">{{ contact.phoneDisplay }}</a></dd>
+        </div>
+      </dl>
+    </div>
+
+    @if (status() === 'sent') {
+      <div class="contact__done" role="status">
+        <h3>Upit je poslat.</h3>
+        <p>Hvala. Javiću vam se na kontakt koji ste ostavili.</p>
+        <button type="button" class="btn btn--ghost-dark" (click)="status.set('idle')">
+          Pošalji još jedan upit
+        </button>
+      </div>
+    } @else {
+      <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <p class="visually-hidden" aria-hidden="true">
+          <label>Ne popunjavati: <input formControlName="botField" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <div class="field">
+          <label for="f-name">Ime i prezime</label>
+          <input
+            id="f-name"
+            formControlName="name"
+            autocomplete="name"
+            [attr.aria-invalid]="showError('name')"
+            [attr.aria-describedby]="showError('name') ? 'f-name-err' : null"
+          />
+          @if (showError('name')) {
+            <p id="f-name-err" class="field__error">Upišite ime da znam kome odgovaram.</p>
+          }
+        </div>
+
+        <div class="field">
+          <label for="f-company">Firma <span class="field__opt">(nije obavezno)</span></label>
+          <input id="f-company" formControlName="company" autocomplete="organization" />
+        </div>
+
+        <div class="field">
+          <label for="f-contact">Email ili telefon</label>
+          <input
+            id="f-contact"
+            formControlName="contact"
+            autocomplete="email"
+            [attr.aria-invalid]="showError('contact')"
+            [attr.aria-describedby]="showError('contact') ? 'f-contact-err' : null"
+          />
+          @if (showError('contact')) {
+            <p id="f-contact-err" class="field__error">Upišite email ili broj telefona za odgovor.</p>
+          }
+        </div>
+
+        <div class="field">
+          <label for="f-message">Šta vam danas oduzima najviše vremena?</label>
+          <textarea
+            id="f-message"
+            formControlName="message"
+            rows="5"
+            [attr.aria-invalid]="showError('message')"
+            [attr.aria-describedby]="showError('message') ? 'f-message-err' : 'f-message-hint'"
+          ></textarea>
+          @if (showError('message')) {
+            <p id="f-message-err" class="field__error">Opišite ukratko posao ili problem.</p>
+          } @else {
+            <p id="f-message-hint" class="field__hint">
+              Na primer: ponude pravimo u Excelu i svaka traje po sat vremena.
+            </p>
+          }
+        </div>
+
+        @if (status() === 'error') {
+          <p class="form__error" role="alert">
+            Slanje nije uspelo. Pokušajte ponovo ili pišite direktno na
+            <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>.
+          </p>
+        }
+
+        <button class="btn btn--primary form__submit" type="submit" [disabled]="status() === 'sending'">
+          {{ status() === 'sending' ? 'Šaljem…' : 'Pošalji upit' }}
+        </button>
+      </form>
+    }
+  </div>
+</section>

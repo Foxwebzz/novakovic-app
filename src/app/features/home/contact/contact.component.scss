@@ -1,0 +1,151 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.contact {
+  padding-block: var(--s-9);
+  background: var(--c-ink);
+  color: var(--c-on-ink);
+}
+
+.contact__grid {
+  display: grid;
+  gap: var(--s-7);
+
+  @media (min-width: bp.$md) {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+}
+
+.contact__lead {
+  margin-top: var(--s-4);
+  max-width: 44ch;
+  font-size: var(--fs-md);
+  color: var(--c-on-ink-muted);
+}
+
+.contact__direct {
+  margin: var(--s-7) 0 0;
+  display: grid;
+  gap: var(--s-4);
+
+  dt {
+    color: var(--c-on-ink-muted);
+    font-size: var(--fs-sm);
+  }
+
+  dd {
+    margin: 0;
+    font-size: var(--fs-lg);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+  }
+
+  a {
+    text-decoration-color: var(--c-green-bright);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    &:hover {
+      color: var(--c-green-bright);
+    }
+  }
+}
+
+.form {
+  display: grid;
+  gap: var(--s-5);
+  padding: var(--s-6);
+  background: var(--c-ink-2);
+  border-radius: var(--radius-m);
+
+  @media (max-width: calc(bp.$sm - 1px)) {
+    padding: var(--s-5);
+  }
+}
+
+.field {
+  display: grid;
+  gap: var(--s-2);
+
+  label {
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: var(--s-3) var(--s-4);
+    border: 1.5px solid rgb(169 188 205 / 0.45);
+    border-radius: var(--radius-s);
+    background: var(--c-ink);
+    color: var(--c-on-ink);
+    font-size: var(--fs-base);
+    transition: border-color 0.2s var(--ease-out);
+
+    &:hover {
+      border-color: var(--c-on-ink-muted);
+    }
+
+    &:focus-visible {
+      outline-offset: 0;
+      border-color: var(--c-green-bright);
+    }
+
+    &[aria-invalid='true'] {
+      border-color: #ff8a80;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+}
+
+.field__opt,
+.field__hint {
+  font-weight: 400;
+  color: var(--c-on-ink-muted);
+  font-size: var(--fs-sm);
+}
+
+.field__error,
+.form__error {
+  color: #ffb4ab;
+  font-size: var(--fs-sm);
+}
+
+.form__error a {
+  color: inherit;
+}
+
+.form__submit {
+  justify-self: start;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+}
+
+.contact__done {
+  padding: var(--s-6);
+  background: var(--c-ink-2);
+  border-radius: var(--radius-m);
+  border-left: 4px solid var(--c-green-bright);
+  display: grid;
+  gap: var(--s-3);
+  justify-items: start;
+
+  h3 {
+    font-size: var(--fs-lg);
+  }
+
+  p {
+    color: var(--c-on-ink-muted);
+  }
+}

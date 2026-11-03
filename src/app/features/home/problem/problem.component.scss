@@ -1,0 +1,114 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.problem {
+  padding-block: var(--s-9);
+}
+
+.problem__grid {
+  display: grid;
+  gap: var(--s-7);
+
+  @media (min-width: bp.$md) {
+    grid-template-columns: 0.8fr 1.6fr;
+    align-items: start;
+  }
+}
+
+// Tabela stilizovana kao list u tabeli
+.sheet {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-base);
+  background: #fff;
+  border: 1px solid var(--c-line);
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--s-3) var(--s-4);
+    border: 1px solid var(--c-line);
+  }
+
+  thead th {
+    background: var(--c-paper-2);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--c-text-muted);
+  }
+}
+
+.sheet__num {
+  width: 2.75rem;
+  text-align: center !important;
+  background: var(--c-paper-2);
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet__task {
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.sheet__before {
+  color: var(--c-text-muted);
+}
+
+.sheet__after-head {
+  color: var(--c-green) !important;
+}
+
+.sheet__after {
+  font-weight: 600;
+  color: var(--c-text);
+  box-shadow: inset 3px 0 0 var(--c-green);
+}
+
+// Mobilni: svaki red postaje blok
+@media (max-width: calc(bp.$sm - 1px)) {
+  .sheet,
+  .sheet tbody,
+  .sheet tr,
+  .sheet th,
+  .sheet td {
+    display: block;
+  }
+
+  .sheet thead,
+  .sheet .sheet__num {
+    display: none;
+  }
+
+  .sheet tr {
+    border-bottom: 1px solid var(--c-line);
+    padding: var(--s-4);
+  }
+
+  .sheet th,
+  .sheet td {
+    border: 0;
+    padding: 0;
+  }
+
+  .sheet__task {
+    margin-bottom: var(--s-2);
+  }
+
+  .sheet__before::before,
+  .sheet__after::before {
+    content: attr(data-label) ': ';
+    font-weight: 600;
+    color: var(--c-text-muted);
+  }
+
+  .sheet__after {
+    margin-top: var(--s-1);
+    padding-left: var(--s-3) !important;
+  }
+}

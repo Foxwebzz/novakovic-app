@@ -1,0 +1,55 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.process {
+  padding-block: var(--s-9);
+}
+
+.process__list {
+  margin-top: var(--s-7);
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-6);
+
+  @media (min-width: bp.$sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: bp.$md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+}
+
+.process__item {
+  position: relative;
+  padding-top: var(--s-5);
+  border-top: 2px solid var(--c-text);
+
+  @media (min-width: bp.$md) {
+    padding-right: var(--s-6);
+  }
+}
+
+.process__num {
+  display: block;
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--c-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.process__name {
+  margin-top: var(--s-4);
+  font-size: var(--fs-md);
+}
+
+.process__text {
+  margin-top: var(--s-2);
+  color: var(--c-text-muted);
+}
